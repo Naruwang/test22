@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>多文件上传</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script>
+        //点击添加,动态的生成一个上传项
+        function add(){
+            //1.生成div中包含文件上传的内容
+           var $div =  $("<div>\n" +
+                "  文件上传 <input type=\"file\" name=\"filename\" /> <input type=\"button\" value=\"删除\" onclick=\"del(this)\">\n" +
+                " </div>");
+           //2.把生成的div添加到最后
+            $("div:last").after($div);
+        }
+
+
+        //点击删除,删除当前行
+        function del(t){
+            $(t).parent().remove();
+        }
+    </script>
+</head>
+<body>
+    <form action="FileUploadServlet03" method="post" enctype="multipart/form-data">
+       <input type="button" value="添加" onclick="add()"> <input type="submit" value="上传"> <br/>
+        <div>
+            文件上传 <input type="file" name="filename" />
+        </div>
+    </form>
+</body>
+</html>
